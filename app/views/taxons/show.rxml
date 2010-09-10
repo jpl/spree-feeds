@@ -1,0 +1,15 @@
+xml.instruct!
+
+xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/" do
+  xml.channel do
+    xml.title title
+    xml.link URI::HTTP::build(:host => Spree::Config[:site_url], :path => seo_url(@taxon))
+    xml.description @taxon.description
+    xml.image do
+      xml.url URI::HTTP::build(:host => Spree::Config[:site_url], :path => Spree::Config[:logo])
+      xml.link URI::HTTP::build(:host => Spree::Config[:site_url])
+    end
+    
+    xml << render(:partial => "shared/products", :locals => {:products => @products, :taxon => @taxon, :xml => xml })
+  end
+end

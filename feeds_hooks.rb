@@ -39,5 +39,5 @@ class FeedsHooks < Spree::ThemeSupport::HookListener
   #     tab(:taxonomies)
   #   end
   #
-
+  insert_after :inside_head, "shared/link_tag"
 end

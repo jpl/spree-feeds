@@ -1,0 +1,3 @@
+<% if params[:controller] == "taxons" %>
+	<%= auto_discovery_link_tag :rss, seo_url(@taxon) + ".rss" %>
+<% end %>

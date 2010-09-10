@@ -13,7 +13,14 @@ class FeedsExtension < Spree::Extension
   # end
   
   def activate
-
+    ProductsController.class_eval do
+      index.wants.rss { render :layout => false}
+    end
+    
+    TaxonsController.class_eval do
+      show.wants.rss { render :layout => false }
+    end
+    
     # make your helper avaliable in all views
     # Spree::BaseController.class_eval do
     #   helper YourHelper

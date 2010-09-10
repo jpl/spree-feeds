@@ -1,0 +1,12 @@
+products.each do |p|
+  xml.item do
+    xml.title p.name
+    xml.link product_url(p, :only_path => false)
+    xml.description "#{p.description}<br/>#{product_image(p)}"
+    xml.guid p.id
+    xml.pubDate p.updated_at.rfc2822
+    p.taxons.each do |t|
+      xml.category t.name
+    end
+  end
+end
